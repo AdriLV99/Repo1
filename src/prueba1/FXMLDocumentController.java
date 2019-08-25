@@ -85,7 +85,7 @@ private Connection conexion;
                                            +deporte.getText()+"');";
         st.execute(SQL);
         conn.close();
-        JOptionPane.showMessageDialog(null,"Registro Exitoso");
+        JOptionPane.showMessageDialog(null,"Registro Logrado");
     }
     
     @FXML
