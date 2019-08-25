@@ -36,7 +36,7 @@ public class FXMLDocumentController implements Initializable {
 private Connection conexion;
     
     String driver = "org.postgresql.Driver";
-    String ruta = "jdbc:postgresql://192.168.0.10:5432/Paleteria";
+    String ruta = "jdbc:postgresql://192.168.0.2:5432/Paleteria";
     String user = "postgres";
     String password = "12345678";
     
@@ -73,13 +73,14 @@ private Connection conexion;
      public void handleButtonActionn(ActionEvent event) throws ClassNotFoundException, SQLException {
         
         Statement st;
+        
         Class.forName(driver);
         
         st=conn.createStatement();
             //SQL FOR SELECTING ALL OF CUSTOMER
         String SQL = "INSERT INTO usuarios(Nombre, Edad, Color, Deporte) VALUES ('"
                                            +nombre.getText()+"', '"
-                                           +(edad.getText())+"', '"
+                                           +edad.getText()+"', '"
                                            +color.getText()+"', '"
                                            +deporte.getText()+"');";
         st.execute(SQL);
