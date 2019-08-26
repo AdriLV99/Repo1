@@ -95,7 +95,7 @@ private Connection conexion;
         Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
         Statement consulta=(Statement) conne.createStatement();
         consulta.executeUpdate("update usuarios set Edad= "+edad1.getText()+",Color= '"+color1.getText()+"',Deporte='"+deporte1.getText()+"' where Nombre='"+but1.getText()+"'");   
-        JOptionPane.showMessageDialog(null,"Registro Modificado");
+        JOptionPane.showMessageDialog(null,"Registro Actualizado");
      
     }
     
