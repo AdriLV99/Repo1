@@ -36,9 +36,9 @@ public class FXMLDocumentController implements Initializable {
 private Connection conexion;
     
     String driver = "org.postgresql.Driver";
-    String ruta = "jdbc:postgresql://192.168.0.2:5432/Paleteria";
+    String ruta = "jdbc:postgresql://172.16.0.12:5432/Paleteria";
     String user = "postgres";
-    String password = "12345678";
+    String password = "123456789";
     
     @FXML
     private ObservableList<ObservableList> data;
@@ -83,7 +83,7 @@ private Connection conexion;
                                            +edad.getText()+"', '"
                                            +color.getText()+"', '"
                                            +deporte.getText()+"');";
-        st.execute(SQL);
+        st.executeQuery(SQL);
         conn.close();
         JOptionPane.showMessageDialog(null,"Registro Super");
     }
