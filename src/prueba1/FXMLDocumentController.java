@@ -125,11 +125,20 @@ private Connection conexion;
         Class.forName(driver);
         Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
         Statement consulta=(Statement) conne.createStatement();
-        consulta.executeUpdate("delete from public.usu where nombre='"+but11.getText()+"'");
+        consulta.executeUpdate("select eliminar('"+but11.getText()+"','"+edad.getText()+"','"+color.getText()+"','"+deporte.getText()+"');");
         JOptionPane.showMessageDialog(null,"Registro Eliminado");
      
     }
-    
+//    public void handleButtonActionE(ActionEvent event) throws ClassNotFoundException, SQLException {
+//        
+//        Class.forName(driver);
+//        Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
+//        Statement consulta=(Statement) conne.createStatement();
+//        consulta.executeUpdate("delete from public.usu where nombre='"+but11.getText()+"'");
+//        JOptionPane.showMessageDialog(null,"Registro Eliminado");
+//     
+//    }
+//    
     public void handleButtonActionC(ActionEvent event) throws ClassNotFoundException, SQLException {
         Connection c ;
         Tabla1.getColumns().clear();
