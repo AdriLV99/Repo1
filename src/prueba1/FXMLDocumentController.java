@@ -70,31 +70,52 @@ private Connection conexion;
     
     
     
-     public void handleButtonActionn(ActionEvent event) throws ClassNotFoundException, SQLException {
+//     public void handleButtonActionn(ActionEvent event) throws ClassNotFoundException, SQLException {
+//        
+//        Statement st;
+//        
+//        Class.forName(driver);
+//        
+//        st=conn.createStatement();
+//            //SQL FOR SELECTING ALL OF CUSTOMER
+//        String SQL = "INSERT INTO usuarios(Nombre, Edad, Color, Deporte) VALUES ('"
+//                                           +nombre.getText()+"', '"
+//                                           +edad.getText()+"', '"
+//                                           +color.getText()+"', '"
+//                                           +deporte.getText()+"');";
+//        st.execute(SQL);
+//        conn.close();
+//        JOptionPane.showMessageDialog(null,"Registro Super");
+//    }
+    
+    public void handleButtonActionn(ActionEvent event) throws ClassNotFoundException, SQLException {
         
-        Statement st;
-        
-        Class.forName(driver);
-        
-        st=conn.createStatement();
-            //SQL FOR SELECTING ALL OF CUSTOMER
-        String SQL = "INSERT INTO usuarios(Nombre, Edad, Color, Deporte) VALUES ('"
+        Connection c ;
+          try{
+            Class.forName(driver);
+            Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
+            
+            String SQL = "INSERT INTO public.usu(nombre, edad, color, deporte) VALUES ('"
                                            +nombre.getText()+"', '"
                                            +edad.getText()+"', '"
                                            +color.getText()+"', '"
                                            +deporte.getText()+"');";
-        st.executeQuery(SQL);
-        conn.close();
-        JOptionPane.showMessageDialog(null,"Registro Super");
+            
+            ResultSet rs = conne.createStatement().executeQuery(SQL);
+            JOptionPane.showMessageDialog(null,"Registro Super");
+          }catch(Exception e){
+              e.printStackTrace();
+              System.out.println("Error on Building Data");             
+          }
     }
     
-    @FXML
+    
     public void handleButtonActionM(ActionEvent event) throws ClassNotFoundException, SQLException {
         
         Class.forName(driver);
         Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
         Statement consulta=(Statement) conne.createStatement();
-        consulta.executeUpdate("update usuarios set Edad= "+edad1.getText()+",Color= '"+color1.getText()+"',Deporte='"+deporte1.getText()+"' where Nombre='"+but1.getText()+"'");   
+        consulta.executeUpdate("update public.usu set edad= '"+edad1.getText()+"',color= '"+color1.getText()+"',deporte='"+deporte1.getText()+"' where nombre='"+but1.getText()+"'");   
         JOptionPane.showMessageDialog(null,"Registro Actualizado");
      
     }
@@ -104,7 +125,7 @@ private Connection conexion;
         Class.forName(driver);
         Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
         Statement consulta=(Statement) conne.createStatement();
-        consulta.executeUpdate("delete from usuarios where Nombre='"+but11.getText()+"'");
+        consulta.executeUpdate("delete from public.usu where nombre='"+but11.getText()+"'");
         JOptionPane.showMessageDialog(null,"Registro Eliminado");
      
     }
@@ -117,7 +138,7 @@ private Connection conexion;
             Class.forName(driver);
             Connection conne=(Connection) DriverManager.getConnection(ruta,user,password);
             
-            String SQL = "SELECT * from usuarios";
+            String SQL = "SELECT * from public.usu";
             
             ResultSet rs = conne.createStatement().executeQuery(SQL);
      
